@@ -39,10 +39,16 @@ namespace Library_Card_Catalog
             }
             catch
             {
-                if (reader == null)
+                Console.Write("Do you want to create New file? (Y/N)");
+                if (Vaildation.IsYorN(Console.ReadLine()))
                 {
                     WriteXML(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//" + Program.fileName + ".xml", CardCatalog.myBooks);
                 }
+                else
+                {
+                    Environment.Exit(0);
+                }
+
                 return CardCatalog.myBooks;
             }
             finally
@@ -53,41 +59,5 @@ namespace Library_Card_Catalog
                 }
             }
         }
-
-
-
-
-
-
-        /*public static void WriteXML(string fileName, List<Book> myBooks)
-        {
-            Book overview = new Book();
-
-            var writer =
-                new XmlSerializer(typeof(Book));
-
-            var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//" + fileName + ".xml";
-            FileStream file = File.Create(path);
-
-            writer.Serialize(file, overview);
-            file.Close();
-        }
-
-        public static void ReadXML(string fileName)
-        {
-            try
-            {
-                XmlSerializer reader =
-                new XmlSerializer(typeof(Book));
-                var file = new StreamReader(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//" + fileName + ".xml");
-                Book overview = (Book)reader.Deserialize(file);
-                file.Close();
-            }
-            catch(Exception)
-            {
-                Program.CheckList(); 
-            }
-            
-        }*/
     }
 }

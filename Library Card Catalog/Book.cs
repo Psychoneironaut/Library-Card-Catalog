@@ -13,5 +13,4 @@ namespace Library_Card_Catalog
         public int YearPublished { get; set; }
         public decimal Price { get; set; }
     }
-
 }
